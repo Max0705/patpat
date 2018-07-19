@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+  <!-- <classPathEntry
+        location="C:\Users\fzj\.m2\repository\mysql\mysql-connector-java\5.1.22\mysql-connector-java-5.1.22.jar" /> -->
+  <context id="patpat" >
+    <jdbcConnection 
+	    driverClass="com.mysql.jdbc.Driver" 
+	    connectionURL="jdbc:mysql://119.29.22.157:3306/patpat" 
+	    userId="pat" 
+	    password="xmu123" />
+    <javaModelGenerator targetPackage="com.etc.entity" targetProject="patpat" />
+    <sqlMapGenerator targetPackage="com.etc.mapper" targetProject="patpat" />
+    <javaClientGenerator targetPackage="com.etc.dao" targetProject="patpat" type="XMLMAPPER" />
+    <!-- type有三个值：ANNOTATEDMAPPER、MIXEDMAPPER、XMLMAPPER -->
+    <!--  数据库　表名　生成名domainObjectName="" -->
+    <table schema="shorttermcase" tableName="admin">
+    	<generatedKey column="adminId" sqlStatement="mysql" identity="true" />  
+    </table>
+    <table schema="shorttermcase" tableName="app">
+    	<generatedKey column="appId" sqlStatement="mysql" identity="true" />  
+    </table>
+    <table schema="shorttermcase" tableName="app_follow">
+    	<generatedKey column="followId" sqlStatement="mysql" identity="true" />  
+    </table>
+    <table schema="shorttermcase" tableName="app_label">
+    	<generatedKey column="labelId" sqlStatement="mysql" identity="true" />  
+    </table>
+    <table schema="shorttermcase" tableName="comment">
+    	<generatedKey column="commentId" sqlStatement="mysql" identity="true" />  
+    </table>
+    <table schema="shorttermcase" tableName="user">
+    	<generatedKey column="userId" sqlStatement="mysql" identity="true" />  
+    </table>
+    <table schema="shorttermcase" tableName="user_activity">
+    	<generatedKey column="activityId" sqlStatement="mysql" identity="true" />  
+    </table>
+    <table schema="shorttermcase" tableName="user_follow">
+    	<generatedKey column="followId" sqlStatement="mysql" identity="true" />  
+    </table>
+  </context>
+</generatorConfiguration>
