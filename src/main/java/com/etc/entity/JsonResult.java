@@ -26,6 +26,7 @@ public class JsonResult<T> {
         this.message = message;
     }
 
+    //操作成功
     public JsonResult(T data){
         this.state = SUCCESS;
         this.data = data;
