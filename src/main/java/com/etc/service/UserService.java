@@ -1,11 +1,10 @@
 package com.etc.service;
 
 import com.etc.dao.AdminMapper;
+import com.etc.dao.AppFollowMapper;
+import com.etc.dao.UserFollowMapper;
 import com.etc.dao.UserMapper;
-import com.etc.entity.Admin;
-import com.etc.entity.AdminExample;
-import com.etc.entity.User;
-import com.etc.entity.UserExample;
+import com.etc.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +14,15 @@ public class UserService {
     private UserMapper userMapper;
     @Autowired
     private AdminMapper adminMapper;
+    @Autowired
+    private AppFollowMapper appFollowMapper;
+    @Autowired
+    private UserFollowMapper userFollowMapper;
 
-    public boolean addUser(User user){
-        int i=userMapper.insertSelective(user);
-        return i>0;
+    //在使用前需检测有无重名
+    public boolean addUser(User user) {
+        int i = userMapper.insertSelective(user);
+        return i > 0;
     }
 
     public boolean updateUserById(User user){
@@ -58,18 +62,62 @@ public class UserService {
     }
 
     //登录，返回-1为登录失败，0为管理员，1为普通用户
-    public int login(String userName){
+    public int login(String userName,String passWord){
         AdminExample adminExample=new AdminExample();
         adminExample.createCriteria().andAdminnameEqualTo(userName);
         for(Admin admin:adminMapper.selectByExample(adminExample)){
-            if(admin.getAdminname()!=null)return 0;
+            if(admin.getAdminname()!=null&&passWord.equals(admin.getAdminpwd()))return 0;
         }
 
         UserExample userExample=new UserExample();
         userExample.createCriteria().andUsernameEqualTo(userName);
         for(User user:userMapper.selectByExample(userExample)){
-            if(user.getUsername()!=null) return 1;
+            if(user.getUsername()!=null&&passWord.equals(user.getUserpwd())) return 1;
         }
         return -1;
+    }
+
+    //关注应用
+    //等待APPservice完成后修改
+    public boolean userFollowApp(String userName,String appName){
+        User user=selectUserByName(userName);
+        App app=selectAppByName(appNamw);
+        AppFollow appFollow=new AppFollow();
+        appFollow.setFollowappid(app.getAppid());
+        appFollow.setUserid(user.getUserid());
+        int i=appFollowMapper.insertSelective(appFollow);
+        return i>0;
+    }
+
+    //取消关注
+    //等待APPservice完成后修改
+    public boolean userDisfollowApp(String userName,String appName){
+        User user=selectUserByName(userName);
+        App app=selectAppByName(appNamw);
+        AppFollowExample appFollowExample=new AppFollowExample();
+        appFollowExample.createCriteria().andFollowappidEqualTo(app.getAppid()).andUseridEqualTo(user.getUserid());
+        int i=appFollowMapper.deleteByExample(appFollowExample);
+        return i>0;
+    }
+
+    //关注用户
+    public boolean userFollowUser(String followerName,String folledName){
+        User follower=selectUserByName(followerName);
+        User folled=selectUserByName(folledName);
+        UserFollow userFollow=new UserFollow();
+        userFollow.setUserid(follower.getUserid());
+        userFollow.setFollowuserid(folled.getUserid());
+        int i=userFollowMapper.insertSelective(userFollow);
+        return i>0;
+    }
+
+    //取关用户
+    public boolean userDisfollowUser(String followerName,String folledName){
+        User follower=selectUserByName(followerName);
+        User folled=selectUserByName(folledName);
+        UserFollowExample userFollowExample=new UserFollowExample();
+        userFollowExample.createCriteria().andFollowuseridEqualTo(folled.getUserid()).andUseridEqualTo(follower.getUserid());
+        int i=userFollowMapper.deleteByExample(userFollowExample);
+        return i>0;
     }
 }
