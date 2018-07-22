@@ -79,26 +79,26 @@ public class UserService {
 
     //关注应用
     //等待APPservice完成后修改
-    public boolean userFollowApp(String userName,String appName){
-        User user=selectUserByName(userName);
-        App app=selectAppByName(appNamw);
-        AppFollow appFollow=new AppFollow();
-        appFollow.setFollowappid(app.getAppid());
-        appFollow.setUserid(user.getUserid());
-        int i=appFollowMapper.insertSelective(appFollow);
-        return i>0;
-    }
+//    public boolean userFollowApp(String userName,String appName){
+//        User user=selectUserByName(userName);
+//        App app=selectAppByName(appNamw);
+//        AppFollow appFollow=new AppFollow();
+//        appFollow.setFollowappid(app.getAppid());
+//        appFollow.setUserid(user.getUserid());
+//        int i=appFollowMapper.insertSelective(appFollow);
+//        return i>0;
+//    }
 
     //取消关注
     //等待APPservice完成后修改
-    public boolean userDisfollowApp(String userName,String appName){
-        User user=selectUserByName(userName);
-        App app=selectAppByName(appNamw);
-        AppFollowExample appFollowExample=new AppFollowExample();
-        appFollowExample.createCriteria().andFollowappidEqualTo(app.getAppid()).andUseridEqualTo(user.getUserid());
-        int i=appFollowMapper.deleteByExample(appFollowExample);
-        return i>0;
-    }
+//    public boolean userDisfollowApp(String userName,String appName){
+//        User user=selectUserByName(userName);
+//        App app=selectAppByName(appNamw);
+//        AppFollowExample appFollowExample=new AppFollowExample();
+//        appFollowExample.createCriteria().andFollowappidEqualTo(app.getAppid()).andUseridEqualTo(user.getUserid());
+//        int i=appFollowMapper.deleteByExample(appFollowExample);
+//        return i>0;
+//    }
 
     //关注用户
     public boolean userFollowUser(String followerName,String folledName){
