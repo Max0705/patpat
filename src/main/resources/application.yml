@@ -2,9 +2,12 @@ spring:
   profiles:
     active: dev   
   datasource: 
-    url: jdbc:mysql://119.29.22.157:3306/patpat?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://119.29.22.157:3306/patpat?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: pat
     password: xmu123
+#    url:jdbc:mysql://localhost:3306/patpat?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+#    username: root
+#    password: 123456
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
