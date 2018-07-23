@@ -61,10 +61,16 @@ public class UserController {
         return new JsonResult<User>(userService.selectUserByName(userName));
     }
     //用户关注用户
-    @PutMapping("/user/{userName}/followUser/{followUserName}")
+    @PostMapping("/user/{userName}/followUser/{followUserName}")
     public JsonResult userFollow(@PathVariable String userName,@PathVariable String followUserName){
+        if(userFollowService.checkFollowUser(userName,followUserName))return new JsonResult("用户已关注");
         if(userService.userFollowUser(userName,followUserName))return new JsonResult("用户关注成功");
         else return new JsonResult("用户关注失败");
+    }
+    //判断是否已关注该用户
+    @GetMapping("/user/{userName}/checkFollowUser/{followUserName}")
+    public JsonResult checkFollowUsered(@PathVariable String userName,@PathVariable String followUserName){
+        return new JsonResult(userFollowService.checkFollowUser(userName,followUserName));
     }
     //用户取关用户
     @DeleteMapping("/user/{userName}/disfollowUser/{followUserName}")
@@ -81,8 +87,17 @@ public class UserController {
         }
         return new JsonResult<User>(userList);
     }
+    //获取粉丝列表
+    @GetMapping("/user/{userName}/fanList")
+    public JsonResult<User> getFanList(@PathVariable String userName){
+        List<User> userList=new ArrayList<User>();
+        for(UserFollow userFollow:userFollowService.getFanList(userName)){
+            userList.add(userService.otherSelectUserById(userFollow.getUserid()));
+        }
+        return new JsonResult<User>(userList);
+    }
     //用户关注应用
-    @PutMapping("/user/{userName}/followApp/{appId}")
+    @PostMapping("/user/{userName}/followApp/{appId}")
     public JsonResult userFollowApp(@PathVariable String userName,@PathVariable int appId){
         if(userService.userFollowApp(userName,appId))return new JsonResult("App关注成功");
         else return new JsonResult("App关注失败");
@@ -102,11 +117,7 @@ public class UserController {
         }
         return new JsonResult<App>(appList);
     }
-    @DeleteMapping("/user/{userid}")
-    public JsonResult userDelete(@PathVariable Integer userid){
-        if(userService.deleteUserById(userid)) return new JsonResult("删除成功");
-        else return new JsonResult("删除失败");
-    }
+    //删除用户
     @DeleteMapping("/user/{userid}")
     public JsonResult userDelete(@PathVariable Integer userid){
         if(userService.deleteUserById(userid)) return new JsonResult("删除成功");

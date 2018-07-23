@@ -18,6 +18,8 @@ public class UserService {
     private AppFollowMapper appFollowMapper;
     @Autowired
     private UserFollowMapper userFollowMapper;
+    @Autowired
+    private AppService appService;
 
     //在使用前需检测有无重名
     public boolean addUser(User user) {
@@ -54,10 +56,31 @@ public class UserService {
         return user;
     }
 
+    //不显示密码
+    public User otherSelectUserByName(String name){
+        User user=new User();
+        UserExample userExample=new UserExample();
+        userExample.createCriteria().andUsernameEqualTo(name);
+        for(User u:userMapper.selectByExample(userExample)){
+            user=u;
+        }
+        user.setUserpwd("保密");
+        return user;
+    }
+
     public User selectUserById(Integer Id){
         User user=new User();
         UserExample userExample=new UserExample();
         user=userMapper.selectByPrimaryKey(Id);
+        return user;
+    }
+
+    //不显示密码
+    public User otherSelectUserById(Integer Id){
+        User user=new User();
+        UserExample userExample=new UserExample();
+        user=userMapper.selectByPrimaryKey(Id);
+        user.setUserpwd("保密");
         return user;
     }
 
@@ -78,27 +101,25 @@ public class UserService {
     }
 
     //关注应用
-    //等待APPservice完成后修改
-//    public boolean userFollowApp(String userName,String appName){
-//        User user=selectUserByName(userName);
-//        App app=selectAppByName(appNamw);
-//        AppFollow appFollow=new AppFollow();
-//        appFollow.setFollowappid(app.getAppid());
-//        appFollow.setUserid(user.getUserid());
-//        int i=appFollowMapper.insertSelective(appFollow);
-//        return i>0;
-//    }
+    public boolean userFollowApp(String userName,int AppId){
+        User user=selectUserByName(userName);
+        App app=appService.selectAppById(AppId);
+        AppFollow appFollow=new AppFollow();
+        appFollow.setFollowappid(app.getAppid());
+        appFollow.setUserid(user.getUserid());
+        int i=appFollowMapper.insertSelective(appFollow);
+        return i>0;
+    }
 
     //取消关注
-    //等待APPservice完成后修改
-//    public boolean userDisfollowApp(String userName,String appName){
-//        User user=selectUserByName(userName);
-//        App app=selectAppByName(appNamw);
-//        AppFollowExample appFollowExample=new AppFollowExample();
-//        appFollowExample.createCriteria().andFollowappidEqualTo(app.getAppid()).andUseridEqualTo(user.getUserid());
-//        int i=appFollowMapper.deleteByExample(appFollowExample);
-//        return i>0;
-//    }
+    public boolean userDisfollowApp(String userName,int AppId){
+        User user=selectUserByName(userName);
+        App app=appService.selectAppById(AppId);
+        AppFollowExample appFollowExample=new AppFollowExample();
+        appFollowExample.createCriteria().andFollowappidEqualTo(app.getAppid()).andUseridEqualTo(user.getUserid());
+        int i=appFollowMapper.deleteByExample(appFollowExample);
+        return i>0;
+    }
 
     //关注用户
     public boolean userFollowUser(String followerName,String folledName){
