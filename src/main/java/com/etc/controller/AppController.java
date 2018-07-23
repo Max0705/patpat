@@ -25,8 +25,8 @@ public class AppController {
     @ResponseStatus(value= HttpStatus.ACCEPTED)
     @RequestMapping(value = "/app/delete",method = RequestMethod.DELETE)
     @ResponseBody
-    public boolean deleteApp(@RequestParam Integer appId){
-        return appService.deleteApp(appId);
+    public boolean deleteApp(@RequestParam Integer appid){
+        return appService.deleteApp(appid);
     }
 
 
