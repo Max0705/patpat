@@ -26,20 +26,22 @@ public class UserController {
     @Autowired
     private GreatService greatService;
 
-    @GetMapping("/signin")
-    public JsonResult signin(String userName,String passWord){
-        int i=userService.login(userName,passWord);
+//    @RequestMapping(value = "/signin",method = RequestMethod.PUT)
+////    @ResponseBody
+    @PutMapping("/signin")
+    public JsonResult signin(@RequestBody User user){
+        System.out.println(user.getUsername()+":"+user.getUserpwd());
+        int i=userService.login(user.getUsername(),user.getUserpwd());
         if(i==0)return new JsonResult("管理员登录成功！");
         else if (i==1)return new JsonResult("用户登录成功！");
-        else return new JsonResult("登录失败！");
+        else
+        return new JsonResult("登录失败！");
     }
 
     @PostMapping("/signup")
-    public JsonResult signup(@Valid User user, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            throw new MyException(ErrorEnum.CHECK_ERROR,bindingResult.getFieldError().getDefaultMessage());
-        }
-        if (userService.selectUserByName(user.getUsername())!=null) {
+    public JsonResult signup(@RequestBody User user){
+        System.out.println(user.getUsername()+":"+user.getUserpwd());
+        if (userService.selectUserByName(user.getUsername()).getUsername()!=null) {
             return new JsonResult("该用已存在，注册失败");
         }
             if (!userService.addUser(user)) {
@@ -50,7 +52,7 @@ public class UserController {
     }
 
     @PutMapping("/user/updateUser")
-    public JsonResult updateUser(User user){
+    public JsonResult updateUser(@RequestBody User user){
         if(userService.updateUserByName(user))return new JsonResult("修改成功");
         else return new JsonResult("修改失败");
     }
