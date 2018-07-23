@@ -120,4 +120,11 @@ public class UserService {
         int i=userFollowMapper.deleteByExample(userFollowExample);
         return i>0;
     }
+
+    //删除用户信息
+    public boolean deleteUserById(Integer Id){
+        UserExample userExample=new UserExample();
+        userExample.createCriteria().andUseridEqualTo(Id);
+        return userMapper.deleteByExample(userExample)>0;
+    }
 }
