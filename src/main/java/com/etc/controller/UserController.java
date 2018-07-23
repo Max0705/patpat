@@ -107,6 +107,11 @@ public class UserController {
         if(userService.deleteUserById(userid)) return new JsonResult("删除成功");
         else return new JsonResult("删除失败");
     }
+    @DeleteMapping("/user/{userid}")
+    public JsonResult userDelete(@PathVariable Integer userid){
+        if(userService.deleteUserById(userid)) return new JsonResult("删除成功");
+        else return new JsonResult("删除失败");
+    }
     //
     //测试
     @RequestMapping("/hello")
@@ -114,4 +119,6 @@ public class UserController {
         System.out.println("hello");
         return("hello world");
     }
+    //删除用户
+
 }
