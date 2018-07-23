@@ -3,10 +3,7 @@ package com.etc.controller;
 import com.etc.entity.*;
 import com.etc.enums.ErrorEnum;
 import com.etc.exception.MyException;
-import com.etc.service.AppFollowService;
-import com.etc.service.AppService;
-import com.etc.service.UserFollowService;
-import com.etc.service.UserService;
+import com.etc.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -26,6 +23,8 @@ public class UserController {
     private AppService appService;
     @Autowired
     private UserFollowService userFollowService;
+    @Autowired
+    private GreatService greatService;
 
     @GetMapping("/signin")
     public JsonResult signin(String userName,String passWord){
@@ -122,6 +121,18 @@ public class UserController {
     public JsonResult userDelete(@PathVariable Integer userid){
         if(userService.deleteUserById(userid)) return new JsonResult("删除成功");
         else return new JsonResult("删除失败");
+    }
+    //点赞
+    @PutMapping("/user/{userId}/pressGreat/{commentId}")
+    public JsonResult pressgreat(@PathVariable int userId,@PathVariable int commentId){
+        if(!greatService.checkGreat(userId,commentId)){
+            if(greatService.setGreat(userId,commentId))return new JsonResult("点赞成功");
+            else return new JsonResult("点赞失败");
+        }
+        else {
+            if(greatService.deleteGreat(userId,commentId))return new JsonResult("取消点赞成功");
+            else return new JsonResult("取消点赞失败");
+        }
     }
     //
     //测试

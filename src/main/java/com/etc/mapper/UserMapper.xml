@@ -363,4 +363,5 @@
       userHobby = #{userhobby,jdbcType=VARCHAR}
     where userId = #{userid,jdbcType=INTEGER}
   </update>
+
 </mapper>
