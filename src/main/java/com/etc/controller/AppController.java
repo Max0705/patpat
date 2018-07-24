@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -64,5 +67,68 @@ public class AppController {
     @ResponseBody
     public List<App> getAppBytype(@RequestParam String type){
         return appService.selectAppByType(type);
+    }
+
+    @ResponseStatus(value= HttpStatus.OK)
+    @RequestMapping(value = "/app/sort/download",method = RequestMethod.GET)
+    @ResponseBody
+    public List<App> sortAppByDownload(){
+        List<App> apps=appService.selectAllApp();
+        int[][] s=new int[apps.size()][2];
+        for(int i=0;i<apps.size();i++) {
+            s[i][0] = Integer.valueOf(apps.get(i).getAppdownloads())+(int)(apps.get(i).getAppscore()*10);
+            s[i][1]=i;
+        }
+        sortByDownload(s,0,apps.size()-1);
+        List<App> apps1=new ArrayList<>();
+        for(int i=0;i<apps.size();i++)
+            apps1.add(apps.get(s[apps.size()-i-1][1]));
+        return apps1;
+    }
+
+    @ResponseStatus(value= HttpStatus.OK)
+    @RequestMapping(value = "/app/sort/score",method = RequestMethod.GET)
+    @ResponseBody
+    public List<App> sortAppByScore(){
+        List<App> apps=appService.selectAllApp();
+        int[][] s=new int[apps.size()][2];
+        for(int i=0;i<apps.size();i++) {
+            int j=Integer.valueOf(apps.get(i).getAppdownloads());
+            s[i][0] = (int)(apps.get(i).getAppscore()*10);
+            while(j!=0){
+                s[i][0]++;
+                j/=10;
+            }
+            s[i][1]=i;
+        }
+        sortByDownload(s,0,apps.size()-1);
+        List<App> apps1=new ArrayList<>();
+        for(int i=0;i<apps.size();i++)
+            apps1.add(apps.get(s[apps.size()-i-1][1]));
+        return apps1;
+    }
+    
+
+    public void sortByDownload(int[][] apps,int start,int end){
+        if(start<end){
+            int q=sortDownloa(apps,start,end);
+            sortByDownload(apps,start,q-1);
+            sortByDownload(apps,q+1,end);
+        }
+    }
+    public int sortDownloa(int[][] apps,int start, int end){
+        int q=apps[start][0];
+        int p=apps[start][1];
+        while(start<end){
+            while (start<end&&apps[end][0]>q)end--;
+            apps[start][0]=apps[end][0];
+            apps[start][1]=apps[end][1];
+            while(start<end&&apps[start][0]<=q)start++;
+            apps[end][0]=apps[start][0];
+            apps[end][1]=apps[start][1];
+        }
+        apps[start][0]=q;
+        apps[start][1]=p;
+        return start;
     }
 }
