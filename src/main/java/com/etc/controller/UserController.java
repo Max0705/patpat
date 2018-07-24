@@ -4,17 +4,25 @@ import com.etc.entity.*;
 import com.etc.enums.ErrorEnum;
 import com.etc.exception.MyException;
 import com.etc.service.*;
+import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class UserController {
+public class UserController extends HttpServlet {
     @Autowired
     private UserService userService;
     @Autowired
@@ -25,17 +33,50 @@ public class UserController {
     private UserFollowService userFollowService;
     @Autowired
     private GreatService greatService;
+    @Autowired
+    private LogService logService;
 
 //    @RequestMapping(value = "/signin",method = RequestMethod.PUT)
 ////    @ResponseBody
     @PutMapping("/signin")
-    public JsonResult signin(@RequestBody User user){
-        System.out.println(user.getUsername()+":"+user.getUserpwd());
+    public JsonResult signin(@RequestBody User user, HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+//        System.out.println(user.getUsername()+":"+user.getUserpwd());
+//        System.out.println(userService.selectUserByName(user.getUsername()).getUserid());
         int i=userService.login(user.getUsername(),user.getUserpwd());
-        if(i==0)return new JsonResult("管理员登录成功！");
-        else if (i==1)return new JsonResult("用户登录成功！");
-        else
-        return new JsonResult("登录失败！");
+        if(i==0){
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html;charset=UTF-8");
+            //使用request对象的getSession()获取session，如果session不存在则创建一个
+            HttpSession session = request.getSession();
+            //将数据存储到session中
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("type","admin");
+            session.setAttribute("id",userService.selectUserByName(user.getUsername()).getUserid());
+            return new JsonResult("管理员登录成功！"+session.getId());
+        }
+        else if (i==1){
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html;charset=UTF-8");
+            //使用request对象的getSession()获取session，如果session不存在则创建一个
+            HttpSession session = request.getSession();
+            //将数据存储到session中
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("type","user");
+            session.setAttribute("id",userService.selectUserByName(user.getUsername()).getUserid());
+            return new JsonResult("用户登录成功！"+session.getAttribute("type"));
+        }
+        else {
+//            response.setCharacterEncoding("UTF-8");
+//            response.setContentType("text/html;charset=UTF-8");
+//            //使用request对象的getSession()获取session，如果session不存在则创建一个
+//            HttpSession session = request.getSession();
+//            //将数据存储到session中
+//            session.setAttribute("username", null);
+//            session.setAttribute("type",null);
+//            session.setAttribute("id",null);
+            return new JsonResult("登录失败！");
+        }
     }
 
     @PostMapping("/signup")
@@ -74,7 +115,7 @@ public class UserController {
         return new JsonResult(userFollowService.checkFollowUser(userName,followUserName));
     }
     //用户取关用户
-    @DeleteMapping("/user/{userName}/disfollowUser/{followUserName}")
+    @DeleteMapping("/user/{userName}/unfollowUser/{followUserName}")
     public JsonResult userDisFollow(@PathVariable String userName,@PathVariable String followUserName){
         if(userService.userDisfollowUser(userName,followUserName))return new JsonResult("用户取关成功");
         else return new JsonResult("用户取关失败");
@@ -99,14 +140,21 @@ public class UserController {
     }
     //用户关注应用
     @PostMapping("/user/{userName}/followApp/{appId}")
-    public JsonResult userFollowApp(@PathVariable String userName,@PathVariable int appId){
-        if(userService.userFollowApp(userName,appId))return new JsonResult("App关注成功");
+    public JsonResult userFollowApp(@PathVariable String userName, @PathVariable int appId){
+
+        if(userService.userFollowApp(userName,appId)){
+            logService.addActivity(userService.selectUserByName(userName).getUserid(),appId,2);
+            return new JsonResult("App关注成功");
+        }
         else return new JsonResult("App关注失败");
     }
     //用户取关应用
-    @DeleteMapping("/user/{userName}/disfollowApp/{appId}")
+    @DeleteMapping("/user/{userName}/unfollowApp/{appId}")
     public JsonResult userDisfollowApp(@PathVariable String userName,@PathVariable int appId){
-        if(userService.userDisfollowApp(userName,appId))return new JsonResult("App取关成功");
+        if(userService.userDisfollowApp(userName,appId)){
+            logService.addActivity(userService.selectUserByName(userName).getUserid(),appId,3);
+            return new JsonResult("App取关成功");
+        }
         else return new JsonResult("App取关失败");
     }
     //获取用户关注App列表
@@ -136,6 +184,28 @@ public class UserController {
             else return new JsonResult("取消点赞失败");
         }
     }
+    //按用户获取记录
+    @GetMapping("/user/getLog/{userId}")
+    public JsonResult<UserActivity> getUserLog(@PathVariable int userId){
+        return new JsonResult<UserActivity>(logService.getByUserId(userId));
+    }
+    //在跳转入应用主页面时调用,用于添加日志
+    @PostMapping("/user/accessApp/log/{appId}")
+    public JsonResult accessLog(@PathVariable int appId, HttpServletRequest request,HttpServletResponse response)
+            {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        //使用request对象的getSession()获取session，如果session不存在则创建一个
+        HttpSession session = request.getSession();
+//        System.out.println(session.getId());
+//        System.out.println(session.getAttribute("id"));
+//        System.out.println(session.getAttribute("username"));
+        if(session.getAttribute("id")!=null){
+            logService.addActivity(Integer.parseInt(session.getAttribute("id").toString()),appId,4);
+            return new JsonResult("已添加日志");
+        }
+        return new JsonResult("未添加日志");
+    }
     //
     //测试
     @RequestMapping("/hello")
@@ -144,5 +214,12 @@ public class UserController {
         return("hello world");
     }
     //删除用户
-
+    @GetMapping("/user/all")
+    public JsonResult<User> getAllUser(){
+        return new JsonResult<User>(userService.getall());
+    }
+    @PostMapping("/testlog")
+    public JsonResult testAddLog(){
+        return new JsonResult(logService.addActivity(1,1,1));
+    }
 }

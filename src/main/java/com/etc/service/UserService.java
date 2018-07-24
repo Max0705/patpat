@@ -8,6 +8,8 @@ import com.etc.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -147,5 +149,10 @@ public class UserService {
         UserExample userExample=new UserExample();
         userExample.createCriteria().andUseridEqualTo(Id);
         return userMapper.deleteByExample(userExample)>0;
+    }
+    //getall
+    public List<User> getall(){
+        UserExample userExample=new UserExample();
+        return userMapper.selectByExample(userExample);
     }
 }
