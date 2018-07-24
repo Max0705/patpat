@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -22,6 +23,7 @@ public class CommentController {
     @ResponseBody
     public boolean addComment(@RequestBody Comment comment){
         comment.setLastid(0);
+        comment.setCommentdate(new Date());
         logService.addActivity(comment.getUserid(),comment.getAppid(),4);
         return commentService.createNewComment(comment);
     }
@@ -30,6 +32,7 @@ public class CommentController {
     @RequestMapping(value = "/comment/addAnswer",method = RequestMethod.POST)
     @ResponseBody
     public boolean insertComment(@RequestBody Comment comment){
+        comment.setCommentdate(new Date());
         return commentService.insertComment(comment);
     }
 

@@ -21,6 +21,8 @@ public class AppController {
     @RequestMapping(value = "/app/add",method = RequestMethod.POST)
     @ResponseBody
     public int addApp(@RequestBody App app){
+        Date date=new Date();
+        app.setAppdate(date);
         return appService.insertNewApp(app);
     }
 
