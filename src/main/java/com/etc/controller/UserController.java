@@ -52,7 +52,7 @@ public class UserController extends HttpServlet {
             //将数据存储到session中
             session.setAttribute("username", user.getUsername());
             session.setAttribute("type","admin");
-            session.setAttribute("id",userService.selectUserByName(user.getUsername()).getUserid());
+//            session.setAttribute("id",userService.selectUserByName(user.getUsername()).getUserid());
             return new JsonResult("管理员登录成功！"+session.getId());
         }
         else if (i==1){
