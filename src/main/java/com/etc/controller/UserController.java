@@ -213,7 +213,6 @@ public class UserController extends HttpServlet {
         System.out.println("hello");
         return("hello world");
     }
-    //删除用户
     @GetMapping("/user/all")
     public JsonResult<User> getAllUser(){
         return new JsonResult<User>(userService.getall());
