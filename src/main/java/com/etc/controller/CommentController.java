@@ -2,23 +2,29 @@ package com.etc.controller;
 
 import com.etc.entity.Comment;
 import com.etc.service.CommentService;
+import com.etc.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
 public class CommentController {
     @Autowired
     private CommentService commentService;
+    @Autowired
+    private LogService logService;
 
     @ResponseStatus(value= HttpStatus.ACCEPTED)
     @RequestMapping(value = "/comment/addNew",method = RequestMethod.POST)
     @ResponseBody
     public boolean addComment(@RequestBody Comment comment){
         comment.setLastid(0);
+        comment.setCommentdate(new Date());
+        logService.addActivity(comment.getUserid(),comment.getAppid(),4);
         return commentService.createNewComment(comment);
     }
 
@@ -26,6 +32,7 @@ public class CommentController {
     @RequestMapping(value = "/comment/addAnswer",method = RequestMethod.POST)
     @ResponseBody
     public boolean insertComment(@RequestBody Comment comment){
+        comment.setCommentdate(new Date());
         return commentService.insertComment(comment);
     }
 

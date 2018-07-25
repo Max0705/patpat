@@ -64,4 +64,9 @@ public class AppService {
         appExample.createCriteria().andApptypeEqualTo(type);
         return appMapper.selectByExample(appExample);
     }
+    //获取所有的app
+    public List<App> selectAllApp(){
+        AppExample appExample=new AppExample();
+        return appMapper.selectByExample(appExample);
+    }
 }
