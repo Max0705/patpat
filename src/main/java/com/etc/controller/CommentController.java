@@ -1,6 +1,8 @@
 package com.etc.controller;
 
+import com.etc.entity.App;
 import com.etc.entity.Comment;
+import com.etc.service.AppService;
 import com.etc.service.CommentService;
 import com.etc.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class CommentController {
     private CommentService commentService;
     @Autowired
     private LogService logService;
+    @Autowired
+    private AppService appService;
 
     @ResponseStatus(value= HttpStatus.ACCEPTED)
     @RequestMapping(value = "/comment/addNew",method = RequestMethod.POST)
@@ -25,6 +29,15 @@ public class CommentController {
         comment.setLastid(0);
         comment.setCommentdate(new Date());
         logService.addActivity(comment.getUserid(),comment.getAppid(),4);
+        List<Comment> comments=commentService.selectCommentByAppId(comment.getAppid());
+        float score=0;
+        for(int i=0;i<comments.size();i++)
+            score+=comments.get(i).getCommentscore();
+        score+=comment.getCommentscore();
+        score=(float)score/(comments.size()+1);
+        App app=appService.selectAppById(comment.getAppid());
+        app.setAppscore(score);
+        if(!appService.updataApp(app))return false;
         return commentService.createNewComment(comment);
     }
 
@@ -33,7 +46,7 @@ public class CommentController {
     @ResponseBody
     public boolean insertComment(@RequestBody Comment comment){
         comment.setCommentdate(new Date());
-        return commentService.insertComment(comment);
+        return commentService.createNewComment(comment);
     }
 
     @ResponseStatus(value= HttpStatus.ACCEPTED)
@@ -67,5 +80,12 @@ public class CommentController {
     @ResponseBody
     public List<Comment> getCommentByLastId(@RequestParam Integer lastid){
         return commentService.selectCommentByLasttId(lastid);
+    }
+
+    @ResponseStatus(value =HttpStatus.OK)
+    @RequestMapping(value = "/comment/add/like",method = RequestMethod.PUT)
+    @ResponseBody
+    public boolean addCommentScore(@RequestParam Integer commentid){
+        return commentService.addCommentScore(commentid);
     }
 }

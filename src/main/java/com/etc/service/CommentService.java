@@ -12,13 +12,9 @@ public class CommentService {
     @Autowired
     private CommentMapper commentMapper;
 
-    //发布新评论
+    //添加评论
     public boolean createNewComment(Comment comment){
         return commentMapper.insertSelective(comment)>0;
-    }
-    //评论其他人
-    public boolean insertComment(Comment comment){
-        return commentMapper.insert(comment)>0;
     }
     //删除评论
     public boolean deleteComment(Integer Id){
@@ -29,7 +25,7 @@ public class CommentService {
     //查看app下的评论
     public List<Comment> selectCommentByAppId(Integer appId){
         CommentExample commentExample=new CommentExample();
-        commentExample.createCriteria().andAppidEqualTo(appId);
+        commentExample.createCriteria().andAppidEqualTo(appId).andLastidEqualTo(0);
         return commentMapper.selectByExample(commentExample);
     }
     //查看评论详细信息
@@ -41,5 +37,11 @@ public class CommentService {
         CommentExample commentExample=new CommentExample();
         commentExample.createCriteria().andLastidEqualTo(last_Id);
         return commentMapper.selectByExample(commentExample);
+    }
+    //给评论点赞
+    public boolean addCommentScore(Integer id){
+        Comment comment=commentMapper.selectByPrimaryKey(id);
+        comment.setCommentlike(comment.getCommentlike()+1);
+        return commentMapper.updateByPrimaryKeySelective(comment)>0;
     }
 }
