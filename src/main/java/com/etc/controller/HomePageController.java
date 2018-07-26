@@ -35,5 +35,12 @@ public class HomePageController {
     public String appt(){
         return "app_type_01";
     }
-
+    @RequestMapping("app_single.html")
+    public String dsf(){
+        return "app_single";
+    }
+    @RequestMapping("admin_app.html")
+    public String sldjfk(){
+        return "admin_app";
+    }
 }
