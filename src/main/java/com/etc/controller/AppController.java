@@ -22,6 +22,8 @@ public class AppController {
     @ResponseBody
     public int addApp(@RequestBody App app){
         Date date=new Date();
+        app.setAppscore((float)0);
+        app.setAppdownloads("0");
         app.setAppdate(date);
         return appService.insertNewApp(app);
     }
