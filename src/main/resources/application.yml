@@ -37,6 +37,12 @@ spring:
       content-type: text/html; charset=utf-8
     mode: LEGACYHTML5
 
+  multipartResolver:
+    type: org.springframework.web.multipart.commons.CommonsMultipartResolver
+    defaultEncoding: UTF-8
+    maxUploadSize: 20000
+    maxInMemorySize: 40960
+
 mybatis:
   mapper-locations: classpath:com/etc/mapper/*.xml
   typeAliasesPackage: com.etc.entity
