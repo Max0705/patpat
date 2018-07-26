@@ -461,9 +461,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>"+result[2]['appname']+"</p>"+
                         "</div>"+
                         "<div class=\"caption\">"+
-                        "<h4>APP描述</h4><p>"+result[2]['appdate']+"</p>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>版本</span> ***</h6>"+
+                        "<h4>APP描述</h4><p>"+result[2][
+                        "<h6><span>版本</span> ***</h6>"+'appdate']+"</p>"+
+                    "<div class=\"matrlf-mid\">"+
                         "<ul class=\"rating\">"+
                         "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
                         "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
@@ -850,6 +850,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 contentType: "application/json; charset=utf-8",
                 success:function(JsonResult){
                     alert(JsonResult.data);
+                    window.location.href="/patpat/rankings.html"
                 }
             });
         });

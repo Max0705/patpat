@@ -5,7 +5,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 	<head>
 		<title>PatPat | 猜你喜欢</title>
@@ -27,21 +27,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--// Metga-tags -->
 
 		<!-- Styleshets -->
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
 		<!--// Bootstrap-css -->
-		<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+		<link th:href="@{/css/popuo-box.css}" rel="stylesheet" type="text/css" media="all" />
 		<!--// Pop-up -->
-		<link href="css/banner.css" rel="stylesheet" type="text/css" media="all" />
+		<link th:href="@{/css/banner.css}" rel="stylesheet" type="text/css" media="all" />
 		<!--// banner-css -->
-		<link rel="stylesheet" href="css/shop.css" type="text/css" media="screen" property="" />
+		<link rel="stylesheet" th:href="@{/css/shop.css}" type="text/css" media="screen" property="" />
 		<!--// shop-css -->
-		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
 		<!-- common-css -->
-		<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+		<link rel="stylesheet" th:href="@{/css/flexslider.css}" type="text/css" media="screen" />
 		<!-- flexslider-css -->
-		<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui1.css}">
 		<!-- Range-slider-css -->
-		<link href="css/font-awesome.css" rel="stylesheet">
+		<link th:href="@{/css/font-awesome.css}" rel="stylesheet">
 		<!-- // Font-awesome-css -->
 		<!--// Styleshets -->
 
@@ -181,7 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 				<!-- 模态框（Modal） myModal-->
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -205,11 +205,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</tr>
 											<tr>
 												<td><b>类型：</b></td>
-												<td><input type="text" id="mobile" name="mobile" class="form-control" /></td>
+												<td><input type="text" id="type" name="mobile" class="form-control" /></td>
 											</tr>
 											<tr>
 												<td><b>详细信息：</b></td>
-												<td><input type="text" id="mobile" name="mobile" class="form-control" /></td>
+												<td><input type="text" id="detail" name="mobile" class="form-control" /></td>
 											</tr>
 									
 										</tbody>
@@ -397,12 +397,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<script src="js/SmoothScroll.min.js"></script>
 		<!-- //smoothscroll -->
 		<script type="text/javascript">
-	
+
 		$(function() {
 			//1.初始化Table
 			var oTable = new TableInit();
 			oTable.Init();
-	
+
 			//2.初始化Button的点击事件
 			var oButtonInit = new ButtonInit();
 			oButtonInit.Init();
@@ -415,7 +415,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					url : "/app/select/all", //请求后台的URL（*）
 					method : "get", //请求方式（*）
 					toolbar : "#toolbar", //工具按钮用哪个容器
-					cache : false,   
+					cache : false,
 					sortable : true,    //这三个属性表格初始化时候的排序
 					sortName : "cid",
 					sortOrder : "asc",
@@ -467,7 +467,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                    valign: "middle",
 	                    sortable: true // 开启排序功能
 					}], /* //改造JsonResult后就不需要配置这个属性了
-					responseHandler: function(res) {  //表格数据设置 
+					responseHandler: function(res) {  //表格数据设置
 						//console.log(res);
 		                return {
 		                    "total": res.pagedatas.total,//总记录数
@@ -486,7 +486,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	            	}
 				});
 			};
-			
+
 			//得到查询的参数
 			oTableInit.queryParams = function(params) {
 				//console.log(params);
@@ -501,14 +501,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				console.log(temp);
 				return temp;
 			};
-	
+
 			return oTableInit;
 		};
-	
-		
+
+
 		var ButtonInit = function() {
 			var oInit = new Object();
-	
+
 			oInit.Init = function() {
 				$("#btn_add").click(function(){
 					//清空表单数据
@@ -516,19 +516,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					//弹出模态窗口
 					$("#myModal").modal();
 				});
-				
+
 				$("#btn_edit").click(function(){
 					var arrselections = commonCheck(true);
 					if(arrselections==null)return;
 					$("#editForm").setForm(arrselections[0]);
 					$("#myModal").modal();
 				});
-			
-			
+
+
 				$("#btn_delete").click(function() {
 					var arrselections = commonCheck(false);
 					if(arrselections==null)return;
-	
+
 					Tip.confirm({
 						message : "确认要删除选择的数据吗？"
 					}).on(function(e) {
@@ -539,11 +539,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						});
 					});
 				});
-	
+
 				$("#btn_query").click(function() {
 					$("#tb_cus").bootstrapTable("refresh");
 				});
-				
+
 				$("#btn_submit").click(function(){
 					var param = $("#editForm").serializeJson();
 					if($("#appid").val()!=""){
@@ -557,10 +557,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					}
 				});
 			};
-	
+
 			return oInit;
 		};
-		
+
 		//统一取选中数据并做校验
 		function commonCheck(only){
 			var arrselections = $("#tb_cus").bootstrapTable("getSelections");
@@ -575,7 +575,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			}
 			return arrselections;
 		}
-		
+
 		//针对增删改的返回内容做统一化处理
 		function commonChange(res){
 			if (res.state == 0) {
@@ -586,7 +586,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    		toastr.error(res.message);
 	    	}
 		}
-		
+
 	</script>
 	</body>
 

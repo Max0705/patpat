@@ -139,7 +139,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>-->
 					<div class="clearfix"></div>
 					<!-- product-sec1 -->
-					<div class="product-sec1">
+					<div class="product-sec1" id="applist">
 						<!--/mens-->
 
 
@@ -398,385 +398,388 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- smoothscroll -->
 	<script th:src="@{/js/SmoothScroll.min.js}"></script>
 	<script>
-        $(document).ready(function(){
-			var ty=localStorage["class"];
+        $(document).ready(function() {
+            var ty = localStorage["class"];
             $.ajax({
-                type:"GET",
-                url:"/patpat/app/select/type?type="+ty,
-                dataType:"json",
-                success:function(result){
-                var app1="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[0]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                    "</div>"+
-                    "<div class=\"caption\">"+
-                        "<h4>\"+result[0]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                    "<ul class=\"rating\">"+
-                            "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                    "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                    "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                    "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                    "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                    "</ul>"+
-                    "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                    "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                    "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                    "data-id=\"70056\""+
-                    "data-taptap-download=\"client\""+
-                "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                type: "GET",
+                url: "/patpat/app/select/type?type=" + ty,
+                dataType: "json",
+                success: function (result) {
+                    var app1 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[0]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[0]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app1)
-                    var app2="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[1]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                        "</div>"+
-                        "<div class=\"caption\">"+
-                        "<h4>\"+result[1]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                        "<ul class=\"rating\">"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "</ul>"+
-                        "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                        "data-id=\"70056\""+
-                        "data-taptap-download=\"client\""+
-                        "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                    var app2 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[1]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[1]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app2)
-                    var app3="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[2]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                        "</div>"+
-                        "<div class=\"caption\">"+
-                        "<h4>\"+result[2]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                        "<ul class=\"rating\">"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "</ul>"+
-                        "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                        "data-id=\"70056\""+
-                        "data-taptap-download=\"client\""+
-                        "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                    var app3 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[2]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[2]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app3)
-                    var app4="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[3]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                        "</div>"+
-                        "<div class=\"caption\">"+
-                        "<h4>\"+result[3]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                        "<ul class=\"rating\">"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "</ul>"+
-                        "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                        "data-id=\"70056\""+
-                        "data-taptap-download=\"client\""+
-                        "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                    var app4 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[3]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[3]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app4)
-                    var app5="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[4]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                        "</div>"+
-                        "<div class=\"caption\">"+
-                        "<h4>\"+result[4]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                        "<ul class=\"rating\">"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "</ul>"+
-                        "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                        "data-id=\"70056\""+
-                        "data-taptap-download=\"client\""+
-                        "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                    var app5 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[4]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[4]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app5)
-                    var app6="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[5]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                        "</div>"+
-                        "<div class=\"caption\">"+
-                        "<h4>\"+result[5]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                        "<ul class=\"rating\">"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "</ul>"+
-                        "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                        "data-id=\"70056\""+
-                        "data-taptap-download=\"client\""+
-                        "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                    var app6 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[5]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[5]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app6)
-                    var app7="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[6]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                        "</div>"+
-                        "<div class=\"caption\">"+
-                        "<h4>\"+result[6]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                        "<ul class=\"rating\">"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "</ul>"+
-                        "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                        "data-id=\"70056\""+
-                        "data-taptap-download=\"client\""+
-                        "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                    var app7 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[6]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[6]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app7)
-                    var app8="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[7]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                        "</div>"+
-                        "<div class=\"caption\">"+
-                        "<h4>\"+result[7]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                        "<ul class=\"rating\">"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "</ul>"+
-                        "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                        "data-id=\"70056\""+
-                        "data-taptap-download=\"client\""+
-                        "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                    var app8 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[7]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[7]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app8)
-                    var app9="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[8]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                        "</div>"+
-                        "<div class=\"caption\">"+
-                        "<h4>\"+result[8]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                        "<ul class=\"rating\">"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "</ul>"+
-                        "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                        "data-id=\"70056\""+
-                        "data-taptap-download=\"client\""+
-                        "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                    var app9 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[8]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[8]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app9)
-                    var app10="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[9]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                        "</div>"+
-                        "<div class=\"caption\">"+
-                        "<h4>\"+result[9]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                        "<ul class=\"rating\">"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "</ul>"+
-                        "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                        "data-id=\"70056\""+
-                        "data-taptap-download=\"client\""+
-                        "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                    var app10 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[9]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[9]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app10)
-                    var app11="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[10]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                        "</div>"+
-                        "<div class=\"caption\">"+
-                        "<h4>\"+result[10]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                        "<ul class=\"rating\">"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "</ul>"+
-                        "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                        "data-id=\"70056\""+
-                        "data-taptap-download=\"client\""+
-                        "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                    var app11 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[10]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[10]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app11)
-                    var app12="<div class=\"col-md-4 product-men\">"+
-                        "<div class=\"product-edu-info edu\">"+
-                        "<div class=\"thumbnail\">"+
-                        "<a href=\"app_single.html\"><img src="+result[11]['appicon']+ "alt=\"\"></a>"+
-                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>"+
-                        "</div>"+
-                        "<div class=\"caption\">"+
-                        "<h4>\"+result[11]['appdate']+\"</h4>"+
-                        "<div class=\"matrlf-mid\">"+
-                        "<h6><span>下载数</span> ***</h6>"+
-                        "<ul class=\"rating\">"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>"+
-                        "</ul>"+
-                        "<div class=\"clearfix\"> </div>"+
-                        "</div>"+
-                        "<a id=\"download-a\""+
-                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\""+
-                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\""+
-                        "data-id=\"70056\""+
-                        "data-taptap-download=\"client\""+
-                        "class=\"btn btn-primary\">"+
-                        "下载"+
-                        "</a>"+
-                        "</div>"+
-                        "</div>"+
+                    var app12 = "<div class=\"col-md-4 product-men\">" +
+                        "<div class=\"product-edu-info edu\">" +
+                        "<div class=\"thumbnail\">" +
+                        "<a href=\"app_single.html\"><img src=" + result[11]['appicon'] + "alt=\"\"></a>" +
+                        "<p><span class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></span>APP2</p>" +
+                        "</div>" +
+                        "<div class=\"caption\">" +
+                        "<h4>"+result[11]['appdate']+"</h4>" +
+                        "<div class=\"matrlf-mid\">" +
+                        "<h6><span>下载数</span> ***</h6>" +
+                        "<ul class=\"rating\">" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star yellow-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "<li><a href=\"#\"><span class=\"fa fa-star grey-star\" aria-hidden=\"true\"></span></a></li>" +
+                        "</ul>" +
+                        "<div class=\"clearfix\"> </div>" +
+                        "</div>" +
+                        "<a id=\"download-a\"" +
+                        "href=\"https://d.taptap.com/latest/jdqscjzc?app_id=70056\"" +
+                        "onclick=\"ga('send', 'event', 'PopWin', 'Android', 'app')\"" +
+                        "data-id=\"70056\"" +
+                        "data-taptap-download=\"client\"" +
+                        "class=\"btn btn-primary\">" +
+                        "下载" +
+                        "</a>" +
+                        "</div>" +
+                        "</div>" +
                         "</div>";
                     $('#applist').append(app12)
+                }
+            })
+        })
 	</script>
 	<!-- //smoothscroll -->
 
