@@ -35,7 +35,7 @@ public class HomePageController {
     public String appt(){
         return "app_type_01";
     }
-    @RequestMapping("app_single.html")
+    @RequestMapping({"app_single.html","single.html"})
     public String dsf(){
         return "app_single";
     }
