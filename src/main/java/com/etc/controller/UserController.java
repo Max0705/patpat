@@ -34,18 +34,18 @@ public class UserController extends HttpServlet {
 //    @RequestMapping(value = "/signin",method = RequestMethod.PUT)
 ////    @ResponseBody
     @PostMapping("/signin")
-    public JsonResult signin(@RequestBody User user, HttpServletRequest request, HttpServletResponse response)
+    public JsonResult signin(@RequestParam(value = "username") String name, @RequestParam(value = "password") String password,HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        System.out.println(user.getUsername()+":"+user.getUserpwd());
 //        System.out.println(userService.selectUserByName(user.getUsername()).getUserid());
-        int i=userService.login(user.getUsername(),user.getUserpwd());
+        int i=userService.login(name,password);
         if(i==0){
             response.setCharacterEncoding("UTF-8");
             response.setContentType("text/html;charset=UTF-8");
             //使用request对象的getSession()获取session，如果session不存在则创建一个
             HttpSession session = request.getSession();
             //将数据存储到session中
-            session.setAttribute("username", user.getUsername());
+            session.setAttribute("username", name);
             session.setAttribute("type","admin");
 //            session.setAttribute("id",userService.selectUserByName(user.getUsername()).getUserid());
             return new JsonResult("管理员登录成功！"+session.getId());
@@ -56,9 +56,10 @@ public class UserController extends HttpServlet {
             //使用request对象的getSession()获取session，如果session不存在则创建一个
             HttpSession session = request.getSession();
             //将数据存储到session中
-            session.setAttribute("username", user.getUsername());
+            session.setAttribute("username",name);
             session.setAttribute("type","user");
-            session.setAttribute("id",userService.selectUserByName(user.getUsername()).getUserid());
+            session.setAttribute("id",userService.selectUserByName(name).getUserid());
+            System.out.println("登录成功，mdzz");
             return new JsonResult("用户登录成功！"+session.getAttribute("type"));
         }
         else {
