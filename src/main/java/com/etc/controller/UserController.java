@@ -4,11 +4,7 @@ import com.etc.entity.*;
 import com.etc.enums.ErrorEnum;
 import com.etc.exception.MyException;
 import com.etc.service.*;
-import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
@@ -16,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +33,7 @@ public class UserController extends HttpServlet {
 
 //    @RequestMapping(value = "/signin",method = RequestMethod.PUT)
 ////    @ResponseBody
-    @PutMapping("/signin")
+    @PostMapping("/signin")
     public JsonResult signin(@RequestBody User user, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        System.out.println(user.getUsername()+":"+user.getUserpwd());

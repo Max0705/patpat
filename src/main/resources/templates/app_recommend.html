@@ -1,0 +1,438 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>PatPat | 猜你喜欢</title>
+	<!-- Meta-tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Grounding Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Metga-tags -->
+
+	<!-- Styleshets -->
+	<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+	<!--// Bootstrap-css -->
+	<link th:href="@{/css/popuo-box.css}" rel="stylesheet" type="text/css" media="all" />
+	<!--// Pop-up -->
+	<link th:href="@{/css/banner.css}" rel="stylesheet" type="text/css" media="all" />
+	<!--// banner-css -->
+	<link rel="stylesheet" th:href="@{/css/shop.css}" type="text/css" media="screen" property="" />
+	<!--// shop-css -->
+	<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
+	<!-- common-css -->
+	<link rel="stylesheet" th:href="@{/css/flexslider.css}" type="text/css" media="screen" />
+	<!-- flexslider-css -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui1.css}">
+	<!-- Range-slider-css -->
+	<link th:href="@{/css/font-awesome.css}" rel="stylesheet">
+	<!-- // Font-awesome-css -->
+	<!--// Styleshets -->
+
+	<!-- Online-fonts -->
+	<link href="//fonts.googleapis.com/css?family=Montserrat:300,500,600,700,800" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+	<!--// Online-fonts -->
+
+</head>
+
+<body>
+	<!-- header -->
+	<div class="header-w3layouts" id="home">
+		<!-- header-top -->
+		<div class="header_topw3layouts_bar">
+			<div class="container">
+				<div class="header_agileits_left">
+					<ul>
+						<li><i class="fa fa-phone" aria-hidden="true"></i> +(010) 221 918 811</li>
+						<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:info@example.com">info@example.com</a></li>
+					</ul>
+				</div>
+				<div class="header_right">
+					<a href="#" class="log" data-toggle="modal" data-target="#myModal">Login</a>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!--// header-top -->
+		<!-- header-middle -->
+		<div class="header-middle">
+			<div class="container">
+                <div class="logof-w3-agile">
+                    <h1><a href="index.html">PatPat</a></h1>
+                </div>
+                <div class="searchf-w3-agileits-headr">
+                    <form action="#" method="post">
+                        <input type="search" name="Search" placeholder="搜索..." required="">
+                        <button type="submit" class="btn btn-default search" aria-label="Left Align">
+                            <i class="fa fa-search" aria-hidden="true"> </i>
+                        </button>
+                    </form>
+                </div>               
+                <div class="clearfix"></div>
+            </div>
+		</div>
+		<!--// header-middle -->
+		<nav class="navbar navbar-inverse">
+			<div class="navbar-header">
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+			</div>
+
+			<div class="collapse navbar-collapse js-navbar-collapse">
+				<ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">PatPat</a></li>
+                    <li class="active"><a href="index.html">首页</a></li>
+                    <li class="active"><a href="rankings">排行榜</a></li>
+                    <li class="active"><a href="comment">热门评论</a></li>
+                    <li class="active"><a href="app_type">APP分类</a></li>
+                    <li class="active"><a href="app_recommend">猜你喜欢</a></li>
+                    <li class="active"><a href="contact">联系我们</a></li>
+                </ul>
+			</div>
+			<!-- /.nav-collapse -->
+		</nav>
+
+	</div>
+	<!-- banner -->
+	<div class="innerf-banner">
+	</div>
+	<!--//banner -->
+	<!-- Page details -->
+	<div class="services-agile-breadcrumb">
+		<div class="inner_breadcrumb">
+			<ul class="short_ls">
+				<li>
+					<a href="index.html">首页</a>
+					<span>| |</span>
+				</li>
+				<li>猜你喜欢</li>
+			</ul>
+		</div>
+	</div>
+	<!-- //Page details -->
+	<!-- Single -->
+	<div class="innerf-pages">
+		<div class="container">
+			
+			<div class="clearfix"> </div>
+
+			<!-- /new_arrivals -->
+			<div class="new_arrivals">
+				<h3>猜你喜欢</h3>
+				<!-- /womens -->
+				<div class="col-md-3 product-men women_two">
+					<div class="product-edu-info edu">
+						<div class="thumbnail">
+							<a href="#"><img th:src="@{/images/mf3.jpg}" alt=""></a>
+							<p><span class="fa fa-hand-o-down" aria-hidden="true"></span>APP1</p>
+						</div>
+						<div class="caption">
+							<h4>APP1简介</h4>						
+							<div class="matrlf-mid">
+								<h6><span>下载数</span> ***</h6>
+								<ul class="rating">
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+								</ul>
+								<div class="clearfix"> </div>
+							</div>
+							<a id="download-a" 
+										href="https://d.taptap.com/latest/jdqscjzc?app_id=70056" 
+										onclick="ga('send', 'event', 'PopWin', 'Android', 'app')" 
+										data-id="70056" 
+										data-taptap-download="client" 
+										class="btn btn-primary">
+					                    下载
+					                </a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 product-men women_two">
+					<div class="product-edu-info edu">
+						<div class="thumbnail">
+							<a href="#"><img th:src="@{/images/mf4.jpg}" alt=""></a>
+							<p><span class="fa fa-hand-o-down" aria-hidden="true"></span>APP2</p>
+						</div>
+						<div class="caption">
+							<h4>APP2简介</h4>						
+							<div class="matrlf-mid">
+								<h6><span>下载数</span> ***</h6>
+								<ul class="rating">
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star gray-star" aria-hidden="true"></span></a></li>
+								</ul>
+								<div class="clearfix"> </div>
+							</div>
+							<a id="download-a" 
+										href="https://d.taptap.com/latest/jdqscjzc?app_id=70056" 
+										onclick="ga('send', 'event', 'PopWin', 'Android', 'app')" 
+										data-id="70056" 
+										data-taptap-download="client" 
+										class="btn btn-primary">
+					                    下载
+					                </a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 product-men women_two">
+					<div class="product-edu-info edu">
+						<div class="thumbnail">
+							<a href="#"><img th:src="@{/images/mf6.jpg}" alt=""></a>
+							<p><span class="fa fa-hand-o-down" aria-hidden="true"></span>APP3</p>
+						</div>
+						<div class="caption">
+							<h4>APP3简介</h4>							
+							<div class="matrlf-mid">
+								<h6><span>下载数</span> ***</h6>
+								<ul class="rating">
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star gray-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star gray-star" aria-hidden="true"></span></a></li>
+								</ul>
+								<div class="clearfix"> </div>
+							</div>
+							<a id="download-a" 
+										href="https://d.taptap.com/latest/jdqscjzc?app_id=70056" 
+										onclick="ga('send', 'event', 'PopWin', 'Android', 'app')" 
+										data-id="70056" 
+										data-taptap-download="client" 
+										class="btn btn-primary">
+					                    下载
+					                </a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 product-men women_two">
+					<div class="product-edu-info edu">
+						<div class="thumbnail">
+							<a href="#"><img th:src="@{/images/mf2.jpg}" alt=""></a>
+							<p><span class="fa fa-hand-o-down" aria-hidden="true"></span>APP4</p>
+						</div>
+						<div class="caption">
+							<h4>APP4简介</h4>
+							<div class="matrlf-mid">
+								<h6><span>下载数</span> ***</h6>
+								<ul class="rating">
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star yellow-star" aria-hidden="true"></span></a></li>
+									<li><a href="#"><span class="fa fa-star gray-star" aria-hidden="true"></span></a></li>
+								</ul>
+								<div class="clearfix"> </div>
+							</div>
+							<a id="download-a" 
+										href="https://d.taptap.com/latest/jdqscjzc?app_id=70056" 
+										onclick="ga('send', 'event', 'PopWin', 'Android', 'app')" 
+										data-id="70056" 
+										data-taptap-download="client" 
+										class="btn btn-primary">
+					                    下载
+					                </a>
+						</div>
+					</div>
+				</div>
+
+				<!-- //womens -->
+				<div class="clearfix"></div>
+			</div>
+			<!--//new_arrivals-->
+
+
+
+
+			<div class="clearfix"></div>
+
+		</div>
+	</div>
+	<!--// Single -->
+
+
+	<!-- Subscribe -->
+	<!--// Subscribe -->
+	<!-- footer -->
+	<div class="footer-wthree-copyf">
+		<div class="container">
+			<p>© 2018 ＰａｔＰａｔ. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- //footer -->
+
+	<!-- js -->
+
+	<!-- Common js -->
+	<script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
+	<!--// Common js -->
+	<!-- cart-js -->
+	<script th:src="@{/js/minicart.js}"></script>
+	<script>
+		edu.render();
+
+		edu.cart.on('edu_checkout', function (evt) {
+			var items, len, i;
+
+			if (this.subtotal() > 0) {
+				items = this.items();
+
+				for (i = 0, len = items.length; i < len; i++) {}
+			}
+		});
+	</script>
+	<!-- //cart-js -->
+	<!-- single -->
+	<script th:src="@{/js/imagezoom.js}"></script>
+	<!-- single -->
+	<!-- FlexSlider -->
+	<script th:src="@{/js/jquery.flexslider.js}"></script>
+	<script>
+		// Can also be used with $(document).ready()
+		$(window).load(function () {
+			$('.flexslider1').flexslider({
+				animation: "slide",
+				controlNav: "thumbnails"
+			});
+		});
+	</script>
+	<!-- //FlexSlider-->
+
+	<!-- Nav Js -->
+	<script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+	<script>
+		$(document).ready(function () {
+			$(".dropdown").hover(
+				function () {
+					$('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("400");
+					$(this).toggleClass('open');
+				},
+				function () {
+					$('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("400");
+					$(this).toggleClass('open');
+				}
+			);
+		});
+	</script>
+	<!--// Nav Js -->
+	<!-- bootstrap-pop-up -->
+	<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					Sign In & Sign Up
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<section>
+					<div class="modal-body">
+						<div class="loginf_module">
+							<div class="module form-module">
+								<div class="toggle"><i class="fa fa-times fa-pencil"></i>
+									<div class="tooltip">Click Me</div>
+								</div>
+								<div class="form">
+									<h3>Login to your account</h3>
+									<form action="#" method="post">
+										<input type="text" name="Username" placeholder="Username" required="">
+										<input type="password" name="Password" placeholder="Password" required="">
+										<input type="submit" value="Login">
+									</form>
+									<div class="cta"><a href="#">Forgot your password?</a></div>
+								</div>
+								<div class="form">
+									<h3>Create an account</h3>
+									<form action="#" method="post">
+										<input type="text" name="Username" placeholder="Username" required="">
+										<input type="password" name="Password" placeholder="Password" required="">
+										<input type="email" name="Email" placeholder="Email address" required="">
+										<input type="text" name="Phone" placeholder="Phone Number" required="">
+										<input type="submit" value="Register">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+	<script>
+		$('.toggle').click(function () {
+			// Switches the Icon
+			$(this).children('i').toggleClass('fa-pencil');
+			// Switches the forms  
+			$('.form').animate({
+				height: "toggle",
+				'padding-top': 'toggle',
+				'padding-bottom': 'toggle',
+				opacity: "toggle"
+			}, "slow");
+		});
+	</script>
+	<!-- //bootstrap-pop-up -->
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+	<script type="text/javascript" th:src="@{/js/easing.js}"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<!-- //here ends scrolling icon -->
+	<!-- smoothscroll -->
+	<script th:src="@{/js/SmoothScroll.min.js}"></script>
+	<!-- //smoothscroll -->
+
+</body>
+
+</html>

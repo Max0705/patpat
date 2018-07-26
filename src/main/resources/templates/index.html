@@ -102,11 +102,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.html">PatPat</a></li>
                     <li class="active"><a href="index.html">首页</a></li>
-                    <li class="active"><a href="index.html">排行榜</a></li>
-                    <li class="active"><a href="index.html">热门评论</a></li>
-                    <li class="active"><a href="index.html">APP分类</a></li>
-                    <li class="active"><a href="index.html">猜你喜欢</a></li>
-                    <li class="active"><a href="contact.html">联系我们</a></li>
+                    <li class="active"><a href="rankings">排行榜</a></li>
+                    <li class="active"><a href="comment">热门评论</a></li>
+                    <li class="active"><a href="app_type">APP分类</a></li>
+                    <li class="active"><a href="app_recommend">猜你喜欢</a></li>
+                    <li class="active"><a href="contact">联系我们</a></li>
                 </ul>
 			</div>
 			<!-- /.nav-collapse -->
@@ -489,7 +489,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li class="col-md-3 col-sm-6 col-xs-6 mtrl-f-grids">
 								<div class="fff">
 									<div class="thumbnail">
-										<a href="shop_single.html"><img src="@{/images/mf3.jpg}" alt=""></a>
+										<a href="shop_single.html"><img th:src="@{/images/mf3.jpg}" alt=""></a>
 										<p><span class="fa fa-hand-o-down" aria-hidden="true"></span>APP名称</p>
 									</div>
 									<div class="caption">
@@ -520,7 +520,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li class="col-md-3 col-sm-6 col-xs-6 mtrl-f-grids">
 								<div class="fff">
 									<div class="thumbnail">
-										<a href="shop_single.html"><img src="@{/images/mf4.jpg}" alt=""></a>
+										<a href="shop_single.html"><img th:src="@{/images/mf4.jpg}" alt=""></a>
 										<p><span class="fa fa-hand-o-down" aria-hidden="true"></span>APP名称</p>
 									</div>
 									<div class="caption">
@@ -551,7 +551,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li class="col-md-3 col-sm-6 col-xs-6 mtrl-f-grids">
 								<div class="fff">
 									<div class="thumbnail">
-										<a href="shop_single.html"><img src="@{/images/mf5.jpg}" alt=""></a>
+										<a href="shop_single.html"><img th:src="@{/images/mf5.jpg}" alt=""></a>
 										<p><span class="fa fa-hand-o-down" aria-hidden="true"></span>APP名称</p>
 									</div>
 									<div class="caption">
@@ -772,10 +772,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="form">
 									<h3>Login to your account</h3>
-									<form action="#" method="post">
-										<input type="text" name="Username" placeholder="Username" required="">
-										<input type="password" name="Password" placeholder="Password" required="">
-										<input type="submit" value="Login">
+									<form action="/signin" id="signinMsg" enctype='application/json' method="post">
+										<input type="text" name="username"  placeholder="username" required="">
+										<input type="password" name="userpwd" placeholder="userpwd" required="">
+										<input type="submit" id="Login" value="Login" >
 									</form>
 									<div class="cta"><a href="#">Forgot your password?</a></div>
 								</div>
@@ -784,8 +784,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<form action="#" method="post">
 										<input type="text" name="Username" placeholder="Username" required="">
 										<input type="password" name="Password" placeholder="Password" required="">
-										<input type="email" name="Email" placeholder="Email address" required="">
-										<input type="text" name="Phone" placeholder="Phone Number" required="">
+										<input type="email" name="Email" placeholder="Email address" >
+										<input type="text" name="Phone" placeholder="Phone Number" >
 										<input type="submit" value="Register">
 									</form>
 								</div>
@@ -866,6 +866,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- smoothscroll -->
 	<script th:src="@{/js/SmoothScroll.min.js}"></script>
 	<!-- //smoothscroll -->
+	<script type="application/javascript">
+        //发送表单ajax请求
+        $('#Login').click(function(){
+            var dataObj = $("#signinMsg").serialize();
+            $.ajax({
+                url:"/signin",
+                type: "post",
+                dataType:"json",
+                data:JSON.stringify(dataObj),
+                // cache:false,
+                // ifModified:true,
+                contentType: "application/json; charset=utf-8",
+                success:function(JsonResult){
+                    alert(JsonResult.data);
+                }
+            });
+        });
+	</script>
 
 
 

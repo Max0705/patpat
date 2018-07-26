@@ -11,4 +11,25 @@ public class HomePageController {
         //填入启动页
         return "index";
     }
+    @RequestMapping("/rankings")
+    public String showRankings(){
+        return "rankings";
+    }
+    @RequestMapping("/comment")
+    public String showComment(){
+        return "comment";
+    }
+    @RequestMapping("/contact")
+    public String showContant(){
+        return "contact";
+    }
+    @RequestMapping("/app_recommend")
+    public String showRecommend(){
+        return "app_recommend";
+    }
+    @RequestMapping("/app_type")
+    public String showType(){
+        return "app_type";
+    }
+
 }

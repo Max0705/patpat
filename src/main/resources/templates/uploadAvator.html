@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>登陆</title>
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+    <script type="text/javascript" th:src="@{/js/loader.js}"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+
+</head>
+
+<body>
+<div id="login-page">
+    <div class="container">
+        <form class="form-login" action="user/getUser/" method="get">
+            <h2 class="form-login-heading">商城后台管理系统</h2>
+            <div class="login-wrap"><!-- required 必填， autofocus 光标锁定-->
+                <input type="text" class="form-control" placeholder="请输入管理员名" name="username" required autofocus>
+                <br>
+                <!--<input type="password" class="form-control" placeholder="请输入管理员密码" name="password" required>-->
+                <br>
+                <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i>登录</button>
+                <hr>
+            </div>
+        </form>
+        <!--<div th:action="/user/getusr/用户1" th:method="get"></div>-->
+
+    </div>
+</div>
+
+<script type="text/javascript" th:inline="javascript">
+    $.backstretch("images/login-bg.jpg", {speed: 500});
+
+    var msg = [[${msg}]];
+    if(msg!=""&&msg!=undefined){
+        toastr.warning(msg);
+    }
+
+</script>
+</body>
+</html>

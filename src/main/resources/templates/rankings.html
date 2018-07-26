@@ -1,0 +1,606 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+    <title>PatPat | 排行榜</title>
+    <!-- Meta-tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords"
+        content="Grounding Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+        Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+ 
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!--// Metga-tags -->
+ 
+    <!-- Styleshets -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+    <!--// Bootstrap-css -->
+    <link rel="stylesheet" th:href="@{/css/easy-responsive-tabs.css}">
+    <!--// Responsive-tabs -->
+    <link th:href="@{/css/popuo-box.css}" rel="stylesheet" type="text/css" media="all" />
+    <!--// Pop-up -->
+    <link th:href="@{/css/banner.css}" rel="stylesheet" type="text/css" media="all" />
+    <!--// banner-css -->
+    <link rel="stylesheet" th:href="@{/css/shop.css}" type="text/css" media="screen" property="" />
+    <!--// shop-css -->
+    <link rel="stylesheet" th:href="@{/css/client.css}" type="text/css" media="all" />
+    <!-- // team-right-css -->
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
+    <!-- common-css -->
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet">
+    <!-- // Font-awesome-css -->
+    <!--// Styleshets -->
+ 
+    <!-- Online-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Montserrat:300,500,600,700,800" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <!--// Online-fonts -->
+ 
+</head>
+ 
+<body>
+    <!-- header -->
+    <div class="header-w3layouts" id="home">
+        <!-- header-top -->
+        <div class="header_topw3layouts_bar">
+			<div class="container">
+				<div class="header_agileits_left">
+					<ul>
+						<li><i class="fa fa-phone" aria-hidden="true"></i> +153****5332</li>
+						<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:info@example.com">info@example.com</a></li>
+					</ul>
+				</div>
+				<div class="header_right">
+					<a href="#" class="log" data-toggle="modal" data-target="#myModal">Login</a>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+        <!--// header-top -->
+        <!-- header-middle -->
+        <div class="header-middle">
+			<div class="container">
+                <div class="logof-w3-agile">
+                    <h1><a href="index.html">PatPat</a></h1>
+                </div>
+                <div class="searchf-w3-agileits-headr">
+                    <form action="#" method="post">
+                        <input type="search" name="Search" placeholder="搜索..." required="">
+                        <button type="submit" class="btn btn-default search" aria-label="Left Align">
+                            <i class="fa fa-search" aria-hidden="true"> </i>
+                        </button>
+                    </form>
+                </div>               
+                <div class="clearfix"></div>
+            </div>
+		</div>
+        <!--// header-middle -->
+        <nav class="navbar navbar-inverse">
+			<div class="navbar-header">
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+			</div>
+
+			<div class="collapse navbar-collapse js-navbar-collapse">
+				<ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">PatPat</a></li>
+                    <li class="active"><a href="index.html">首页</a></li>
+                    <li class="active"><a href="rankings">排行榜</a></li>
+                    <li class="active"><a href="comment">热门评论</a></li>
+                    <li class="active"><a href="app_type">APP分类</a></li>
+                    <li class="active"><a href="app_recommend">猜你喜欢</a></li>
+                    <li class="active"><a href="contact">联系我们</a></li>
+                </ul>
+			</div>
+			<!-- /.nav-collapse -->
+		</nav>
+ 
+    </div>
+    <!-- banner -->
+    <div class="innerf-banner">
+    </div>
+    <!--//banner -->
+    <!-- Page details -->
+    <div class="services-agile-breadcrumb">
+        <div class="inner_breadcrumb">
+            <ul class="short_ls">
+                <li>
+                    <a href="index.html">首页</a>
+                    <span>| |</span>
+                </li>
+                <li>排行榜</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //Page details -->
+    <!--about-top-->
+    
+    <!--//about-top-->
+ 
+    <!-- stats-f -->
+    
+    <!-- //stats-f -->
+    <!-- about -->
+    <div class="aboutf">
+        <div class="container">
+            <h3 class="tittlef-agileits-w3layouts">APP排行榜</h3>          
+        </div>
+        <div class="banner_bottom_tab_grids">
+            <div id="verticalTab" class="resp-vtabs" style="display: block; width: 100%; margin: 0px;">
+                <ul class="resp-tabs-list">
+                    <li class="resp-tab-item resp-tab-active" aria-controls="tab_item-0" role="tab">安卓下载榜</li>
+                    <li class="resp-tab-item" aria-controls="tab_item-1" role="tab">IOS下载榜</li>
+                    <li class="resp-tab-item" aria-controls="tab_item-2" role="tab">总下载榜</li>
+                    <li class="resp-tab-item" aria-controls="tab_item-3" role="tab">热门排行榜</li>
+					<li class="resp-tab-item" aria-controls="tab_item-4" role="tab">新品排行榜</li>
+                </ul>
+                <div class="resp-tabs-container">
+                    <!-- tab1 -->
+                    <div class="resp-tab-content resp-tab-content-active" style="display:block" aria-labelledby="tab_item-0">
+                        <!-- tabs-info -->
+                        <div class="main-topicsf">
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bbf1.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP1</h3>
+                                <p class="paragraphf">描述。。。</p>
+                            </div>
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bbf2.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP2</h3>
+                                <p class="paragraphf">描述。。。</p>
+                            </div>
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bbf3.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP3</h3>
+                                <p class="paragraphf">描述。。。</p>
+                            </div>
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bbf4.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP4</h3>
+                                <p class="paragraphf">描述。。。</p>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <!-- //tabs-info -->
+                        <!-- tabs-info -->
+                        
+                        <!-- //tabs-info -->
+                    </div>
+                    <!-- //tab1 -->
+                    <!-- tab2 -->
+                    <div class="resp-tab-content" aria-labelledby="tab_item-1">
+                        <!-- tabs-info -->
+                        <div class="main-topicsf">
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bf5.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP1</h3>
+                                <p class="paragraphf">描述1</p>
+                            </div>
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bf2.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP2</h3>
+                                <p class="paragraphf">描述2</p>
+                            </div>
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bf6.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP3</h3>
+                                <p class="paragraphf">描述3</p>
+                            </div>
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bf7.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP4</h3>
+                                <p class="paragraphf">描述4</p>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <!-- //tabs-info -->
+                        <!-- tabs-info -->                       
+                        <!-- //tabs-info -->
+                    </div>
+                    <!--// tab2 -->
+                    <!-- tab3 -->
+                    <div class="resp-tab-content" aria-labelledby="tab_item-2">
+                        <!-- tabs-info -->
+                        <div class="main-topicsf">
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bbf1.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP1</h3>
+                                <p class="paragraphf">描述1</p>
+                            </div>
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bbf2.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP2</h3>
+                                <p class="paragraphf">描述2</p>
+                            </div>
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bbf3.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP3</h3>
+                                <p class="paragraphf">描述3</p>
+                            </div>
+                            <div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+                                <img th:src="@{/images/bbf4.jpg}" alt="" />
+                                <div class="img-caption">
+                                    <div class="tabs-inn-info-agileits-w3layouts">
+                                        <a href="app_single.html" class="buttonf">查看详情</a>
+                                    </div>
+                                </div>
+                                <h3 class="sub-w3ls-headf">TOP4</h3>
+                                <p class="paragraphf">描述4</p>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <!-- //tabs-info -->
+                        <!-- tabs-info -->                        
+                        <!-- //tabs-info -->
+                    </div>
+                    <!--// tab3 -->
+                    <!-- tab4 -->
+					<div class="resp-tab-content" aria-labelledby="tab_item-3">
+						<!-- tabs-info -->
+						<div class="main-topicsf">
+							<div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+								<img th:src="@{/images/bf1.jpg}" alt="" />
+								<div class="img-caption">
+									<div class="tabs-inn-info-agileits-w3layouts">
+										<a href="app_single.html" class="buttonf">查看详情</a>
+									</div>
+								</div>
+								<h3 class="sub-w3ls-headf">TOP1</h3>
+								<p class="paragraphf">描述1</p>
+							</div>
+							<div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+								<img th:src="@{/images/bf2.jpg}" alt="" />
+								<div class="img-caption">
+									<div class="tabs-inn-info-agileits-w3layouts">
+										<a href="app_single.html" class="buttonf">查看详情</a>
+									</div>
+								</div>
+								<h3 class="sub-w3ls-headf">TOP2</h3>
+								<p class="paragraphf">描述2</p>
+							</div>
+							<div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+								<img th:src="@{/images/bf3.jpg}" alt="" />
+								<div class="img-caption">
+									<div class="tabs-inn-info-agileits-w3layouts">
+										<a href="app_single.html" class="buttonf">查看详情</a>
+									</div>
+								</div>
+								<h3 class="sub-w3ls-headf">TOP3</h3>
+								<p class="paragraphf">描述3</p>
+							</div>
+							<div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+								<img th:src="@{/images/bf4.jpg}" alt="" />
+								<div class="img-caption">
+									<div class="tabs-inn-info-agileits-w3layouts">
+										<a href="app_single.html" class="buttonf">查看详情</a>
+									</div>
+								</div>
+								<h3 class="sub-w3ls-headf">TOP4</h3>
+								<p class="paragraphf">描述4</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<!-- //tabs-info -->
+						<!-- tabs-info -->						
+						<!-- //tabs-info -->
+					</div>
+					<!--// tab4 -->
+					<!-- tab5 -->
+					<div class="resp-tab-content" aria-labelledby="tab_item-4">
+						<!-- tabs-info -->
+						<div class="main-topicsf">
+							<div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+								<img th:src="@{/images/bf9.jpg}" alt="" />
+								<div class="img-caption">
+									<div class="tabs-inn-info-agileits-w3layouts">
+										<a href="app_single.html" class="buttonf">查看详情</a>
+									</div>
+								</div>
+								<h3 class="sub-w3ls-headf">TOP1</h3>
+								<p class="paragraphf">描述1</p>
+							</div>
+							<div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+								<img th:src="@{/images/bbf2.jpg}" alt="" />
+								<div class="img-caption">
+									<div class="tabs-inn-info-agileits-w3layouts">
+										<a href="app_single.html" class="buttonf">查看详情</a>
+									</div>
+								</div>
+								<h3 class="sub-w3ls-headf">TOP2</h3>
+								<p class="paragraphf">描述2</p>
+							</div>
+							<div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+								<img th:src="@{/images/bf8.jpg}" alt="" />
+								<div class="img-caption">
+									<div class="tabs-inn-info-agileits-w3layouts">
+										<a href="app_single.html" class="buttonf">查看详情</a>
+									</div>
+								</div>
+								<h3 class="sub-w3ls-headf">TOP3</h3>
+								<p class="paragraphf">描述3</p>
+							</div>
+							<div class="col-md-3 col-sm-6 tabsf-w3-agileits-grids">
+								<img th:src="@{/images/bf10.jpg}" alt="" />
+								<div class="img-caption">
+									<div class="tabs-inn-info-agileits-w3layouts">
+										<a href="app_single.html" class="buttonf">查看详情</a>
+									</div>
+								</div>
+								<h3 class="sub-w3ls-headf">TOP4</h3>
+								<p class="paragraphf">描述4</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<!-- //tabs-info -->
+						<!-- tabs-info -->					
+						<!-- //tabs-info -->
+					</div>
+					<!--// tab5 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //about-->
+    <!-- instructors section -->
+    
+    <!-- //instructors section -->
+ 
+    <!-- Subscribe -->
+    
+    <!--// Subscribe -->
+    <!-- footer -->
+    <div class="footer-wthree-copyf">
+		<div class="container">
+			<p>© 2018 ＰａｔＰａｔ. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+    <!-- //footer -->
+ 
+    <!-- js -->
+ 
+    <!-- Common js -->
+    <script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
+    <!--// Common js -->
+    <!-- cart-js -->
+    <script th:src="@{/js/minicart.js}"></script>
+    <script>
+        edu.render();
+ 
+        edu.cart.on('edu_checkout', function (evt) {
+            var items, len, i;
+ 
+            if (this.subtotal() > 0) {
+                items = this.items();
+ 
+                for (i = 0, len = items.length; i < len; i++) {}
+            }
+        });
+    </script>
+    <!-- //cart-js -->
+ 
+    <!-- responsive-tabs -->
+    <script th:src="@{/js/easy-responsive-tabs.js}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#verticalTab').easyResponsiveTabs({
+                type: 'vertical',
+                width: 'auto',
+                fit: true
+            });
+        });
+    </script>
+    <!-- //responsive-tabs -->
+ 
+    <!-- Nav Js -->
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("400");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("400");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!--// Nav Js -->
+    <!-- stats-f -->
+    <script th:src="@{/js/jquery.waypoints.min.js}"></script>
+    <script th:src="@{/js/jquery.countup.js}"></script>
+    <script>
+        $('.counter').countUp();
+    </script>
+    <!-- //stats-f -->
+    <!-- bootstrap-pop-up -->
+    <div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Sign In & Sign Up
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <section>
+                    <div class="modal-body">
+                        <div class="loginf_module">
+                            <div class="module form-module">
+                                <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+                                    <div class="tooltip">Click Me</div>
+                                </div>
+                                <div class="form">
+                                    <h3>Login to your account</h3>
+                                    <form action="#" method="post">
+                                        <input type="text" name="Username" placeholder="Username" required="">
+                                        <input type="password" name="Password" placeholder="Password" required="">
+                                        <input type="submit" value="Login">
+                                    </form>
+                                    <div class="cta"><a href="#">Forgot your password?</a></div>
+                                </div>
+                                <div class="form">
+                                    <h3>Create an account</h3>
+                                    <form action="#" method="post">
+                                        <input type="text" name="Username" placeholder="Username" required="">
+                                        <input type="password" name="Password" placeholder="Password" required="">
+                                        <input type="email" name="Email" placeholder="Email address" required="">
+                                        <input type="text" name="Phone" placeholder="Phone Number" required="">
+                                        <input type="submit" value="Register">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.toggle').click(function () {
+            // Switches the Icon
+            $(this).children('i').toggleClass('fa-pencil');
+            // Switches the forms  
+            $('.form').animate({
+                height: "toggle",
+                'padding-top': 'toggle',
+                'padding-bottom': 'toggle',
+                opacity: "toggle"
+            }, "slow");
+        });
+    </script>
+    <!-- //bootstrap-pop-up -->
+ 
+    <!--pop-up-box -->
+    <script th:src="@{/js/jquery.magnific-popup.js}" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+ 
+        });
+    </script>
+    <!-- //pop-up-box -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+    <script type="text/javascript" th:src="@{/js/easing.js}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear' 
+                };
+            */
+ 
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+ 
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <!-- smoothscroll -->
+    <script th:src="@{/js/SmoothScroll.min.js}"></script>
+    <!-- //smoothscroll -->
+ 
+</body>
+ 
+</html>
