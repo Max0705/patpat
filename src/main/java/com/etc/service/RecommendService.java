@@ -96,7 +96,7 @@ public class RecommendService {
         //推荐用户列表
         List<User> recommendUsers=new ArrayList<User>();
         for(User user:recommendUser){
-            if(!recommendUsers.contains(user)&&user.getUserid()!=uid)//去除重复用户
+            if(!recommendUsers.contains(user)&&user.getUserid()!=uid&&recommendUsers.size()<20)//去除重复用户
                 recommendUsers.add(user);
         }
 
