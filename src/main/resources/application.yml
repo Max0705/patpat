@@ -1,6 +1,6 @@
 spring: 
   profiles:
-    active: dev   
+    active: dev
   datasource: 
     url: jdbc:mysql://119.29.22.157:3306/patpat?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: pat
