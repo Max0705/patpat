@@ -17,6 +17,14 @@ public class AppController {
     @Autowired
     AppService appService;
 
+    @ResponseStatus(value= HttpStatus.OK)
+    @RequestMapping(value = "/app/select/all",method = RequestMethod.GET)
+    @ResponseBody
+    public List<App> getAllApp(){
+        return appService.selectAllApp();
+    }
+
+
     @ResponseStatus(value= HttpStatus.ACCEPTED)
     @RequestMapping(value = "/app/add",method = RequestMethod.POST)
     @ResponseBody
